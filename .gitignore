@@ -33,3 +33,5 @@ out/
 
 ### Direnv
 .envrc
+
+.DS_Store
