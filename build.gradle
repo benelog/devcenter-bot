@@ -27,14 +27,13 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5")
 	implementation("com.h2database:h2")
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-	// https://mvnrepository.com/artifact/org.eclipse.mylyn.github/org.eclipse.egit.github.core
-	compile group: 'org.eclipse.mylyn.github', name: 'org.eclipse.egit.github.core', version: '2.1.5'
-
+	compile "org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5"
 }
 
 
