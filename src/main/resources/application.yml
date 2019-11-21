@@ -16,4 +16,6 @@ logging:
     org.springframework.jdbc.core: TRACE
     org.springframework.jdbc.core.StatementCreatorUtils: TRACE
 
-
+id: rp01020113994@gmail.com
+password: gosemvhs3#
+token: ee8e2420581221dc46085c8e4c156afb8cb63cb7
