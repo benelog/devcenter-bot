@@ -64,7 +64,6 @@ public class Message {
 		issueService = service;
 	}
 
-
 	void pushMessage() throws IOException {
 		issueService.createComment(
 			model.getName(), model.getRepoName(),
