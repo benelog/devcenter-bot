@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 
@@ -28,7 +27,7 @@ public class CommentBlockDao {
 	}
 
 	public void insert(CommentBlock block) {
-		SqlParameterSource params = new BeanPropertySqlParameterSource(block);
+		var params = new BeanPropertySqlParameterSource(block);
 		insertAction.execute(params);
 	}
 
@@ -42,12 +41,12 @@ public class CommentBlockDao {
 	}
 
 	public int update(CommentBlock block) {
-		SqlParameterSource params = new BeanPropertySqlParameterSource(block);
+		var params = new BeanPropertySqlParameterSource(block);
 		return jdbc.update(CommentBlockSql.UPDATE, params);
 	}
 
 	public int deleteById(String id) {
-		Map<String, ?> params = Map.of("id", id);
+		var params = Map.of("id", id);
 		return jdbc.update(CommentBlockSql.DELETE_BY_ID, params);
 	}
 }
