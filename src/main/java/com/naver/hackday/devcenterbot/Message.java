@@ -21,13 +21,13 @@ public class Message {
 
 	private GitHubClient client;
 
-	@Value("${token}")
+	@Value("${spring.social.github.token}")
 	private String token;
 
-	@Value("${id}")
+	@Value("${spring.social.github.user}")
 	private String id;
 
-	@Value("${password}")
+	@Value("${spring.social.github.password}")
 	private String password;
 
 	private MessageModel model;
