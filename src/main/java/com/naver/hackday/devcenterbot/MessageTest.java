@@ -18,7 +18,7 @@ public class MessageTest {
 		model.setName("kkyehit");
 		model.setRepoName("egit-github-test");
 		model.setIssueNum("2");
-		model.setComment("dev test");
+		model.setComment("dev test test");
 		message.setModel(model);
 
 		try {

@@ -1,20 +1,29 @@
 package com.naver.hackday.devcenterbot;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
+import java.util.Properties;
 
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.IssueService;
-import org.springframework.stereotype.Component;
 
 import com.naver.hackday.devcenterbot.model.MessageModel;
 
-@Component
 public class Message {
 	private IssueService issueService;
 
 	private GitHubClient client;
 
-	MessageModel model;
+	private String token;
+
+	private String id;
+
+	private String password;
+
+	private MessageModel model;
 
 	public void setIssueService(IssueService issueService) {
 		this.issueService = issueService;
@@ -29,10 +38,25 @@ public class Message {
 	}
 
 	Message() {
-		client = new GitHubClient();
-		client.setCredentials("", "");
-		client.setOAuth2Token("ee8e2420581221dc46085c8e4c156afb8cb63cb7");
-		issueService = new IssueService(client);
+		Properties properties;
+		try {
+			FileReader fileReader = new FileReader("src\\main\\resources\\application.properties");
+			properties = new Properties();
+
+			properties.load(fileReader);
+			id = properties.getProperty("id");
+			password = properties.getProperty("password");
+			token = properties.getProperty("token");
+
+			System.out.println("id : " + id + " password : " + password + " token : " + token);
+
+			client = new GitHubClient();
+			client.setCredentials(id, password);
+			client.setOAuth2Token(token);
+			issueService = new IssueService(client);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	Message(GitHubClient client) {
