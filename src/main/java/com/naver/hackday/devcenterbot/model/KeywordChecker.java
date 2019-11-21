@@ -1,9 +1,17 @@
 package com.naver.hackday.devcenterbot.model;
 
 import org.eclipse.egit.github.core.Issue;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import com.naver.hackday.devcenterbot.bot.BotClassifier;
+
+@Component
 public class KeywordChecker {
 	private FilteringKeyword[] keywords = new FilteringKeyword[7];
+
+	@Autowired
+	BotClassifier botClassifier;
 
 	public KeywordChecker() {
 		keywords[0] = new FilteringKeyword(1, new String[] {"네이버 에디터", "스마트에디터", "네이버에디터", "스마트 에디터"});
@@ -16,43 +24,51 @@ public class KeywordChecker {
 	}
 
 	public void checkToTitle(IssueQueue queue) {
-		Issue checkIssue = queue.poll();
-		System.out.println(checkIssue.getTitle());
-		for (int keyType = 0; keyType < keywords.length; keyType++) {
-			String[] currKey = keywords[keyType].getKeywords();
-			for (int checkerTypeIndex = 0; checkerTypeIndex < currKey.length; checkerTypeIndex++) {
+		while (!queue.isEmpty()) {
+			Issue checkIssue = queue.poll();
+			System.out.println(checkIssue.getTitle());
+			for (int keyType = 0; keyType < keywords.length; keyType++) {
+				String[] currKey = keywords[keyType].getKeywords();
+				for (int checkerTypeIndex = 0; checkerTypeIndex < currKey.length; checkerTypeIndex++) {
 
-				if (checkIssue == null) {
-					break;
-				}
+					if (checkIssue == null) {
+						break;
+					}
 
-				if ((checkIssue.getTitle()).contains(currKey[checkerTypeIndex])) {
-					int id = keywords[keyType].getId();
-					BotRequest bot = classfiedBotRequest(id, checkIssue.getTitle());
+					if ((checkIssue.getTitle()).contains(currKey[checkerTypeIndex])) {
+						int id = keywords[keyType].getId();
+						String issueNum = String.valueOf(checkIssue.getNumber());
+						BotRequest bot = classfiedBotRequest(id, issueNum);
 
-					System.out.println(bot.getId());
-					break;
+						try {
+							botClassifier.classify(bot);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+
+						break;
+					}
 				}
 			}
 		}
 	}
 
-	public BotRequest classfiedBotRequest(int typeId, String title) {
+	public BotRequest classfiedBotRequest(int typeId, String issueNumber) {
 		switch (typeId) {
 			case 1:
-				return BotRequest.SMART_EDITOR_REQUEST.build();
+				return BotRequest.SMART_EDITOR_REQUEST.issueNumber(issueNumber).build();
 			case 2:
-				return BotRequest.NAVER_APP_REQUEST.build();
+				return BotRequest.NAVER_APP_REQUEST.issueNumber(issueNumber).build();
 			case 3:
-				return BotRequest.CLOUD_FUNDING_REQUEST.build();
+				return BotRequest.CLOUD_FUNDING_REQUEST.issueNumber(issueNumber).build();
 			case 4:
-				return BotRequest.NAVER_PAY_REQUEST.build();
+				return BotRequest.NAVER_PAY_REQUEST.issueNumber(issueNumber).build();
 			case 5:
-				return BotRequest.MAP_API_REQUEST.build();
+				return BotRequest.MAP_API_REQUEST.issueNumber(issueNumber).build();
 			case 6:
-				return BotRequest.BAND_API_TYPE.build();
+				return BotRequest.BAND_API_TYPE.issueNumber(issueNumber).build();
 			case 7:
-				return BotRequest.WHALE_TYPE.build();
+				return BotRequest.WHALE_TYPE.issueNumber(issueNumber).build();
 			default:
 				return new BotRequest();
 		}

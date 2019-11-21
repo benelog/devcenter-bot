@@ -32,8 +32,8 @@ public class BotClassifier {
 		String issueNumber = request.getIssueNumber();
 		String comment;
 
-		comment = fetchComment(id);
-
+		//comment = fetchComment(id);
+		comment = "123";
 		submitComment(issueNumber, comment);
 	}
 
@@ -48,7 +48,6 @@ public class BotClassifier {
 		this.model.setRepoName(this.repo);
 		this.model.setIssueNum(issueNumber);
 		this.model.setComment(comment);
-
 		message.setModel(this.model);
 		message.pushMessage();
 	}
