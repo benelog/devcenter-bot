@@ -29,7 +29,7 @@ public class BotClassifierTest {
 	@Test
 	void checkRightAction() throws IOException {
 
-		BotRequest botRequest = BotRequest.MAP_API_REQUEST.issueNumber(3).build();
+		BotRequest botRequest = BotRequest.MAP_API_REQUEST.issueNumber(String.valueOf(3)).build();
 		var brain = new Brain(botRequest.getId(), "지도 api 답변 테스트 완료");
 		brainDao.insert(brain);
 
