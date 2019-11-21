@@ -3,6 +3,12 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:~/hackday/devcenter-bot;AUTO_SERVER=TRUE;MODE=MySQL
     continue-on-error: true
+
+  social:
+    github:
+      user: kkyehit
+      repo: egit-github-test
+
 logging:
   level:
     org.springframework.jdbc.core: TRACE
