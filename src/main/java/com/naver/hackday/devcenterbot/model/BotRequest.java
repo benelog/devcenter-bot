@@ -12,6 +12,7 @@ public class BotRequest {
 		this.keyword = builder.keyword;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}

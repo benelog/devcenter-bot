@@ -28,9 +28,11 @@ public class TitleScrapper {
 		List<Issue> listIssue = issueService.getIssues("ventulus95", "BaekjoonAnswer", filter);
 		int size = listIssue.size();
 		for (int num = checkNumber; num < size; num++) {
-			System.out.print("Issue #" + (num + 1) + " :");
+			// System.out.print("Issue #" + (num + 1) + " :");
 			Issue currentIssue = listIssue.get(num);
-			System.out.println(currentIssue.getTitle());
+			IssueQueue queue = new IssueQueue();
+			queue.setterIssue(currentIssue);
+			// System.out.println(currentIssue.getTitle());
 			String issueTitle = currentIssue.getTitle();
 		}
 		BufferedWriter out = new BufferedWriter(
