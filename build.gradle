@@ -27,16 +27,11 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation("org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5")
 	implementation("com.h2database:h2")
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
-
-	implementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.1.0'
-	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.1.0'
 
 	compile "org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5"
 }
