@@ -32,7 +32,11 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	// https://mvnrepository.com/artifact/org.eclipse.mylyn.github/org.eclipse.egit.github.core
+	compile group: 'org.eclipse.mylyn.github', name: 'org.eclipse.egit.github.core', version: '2.1.5'
+
 }
+
 
 test {
 	useJUnitPlatform()
