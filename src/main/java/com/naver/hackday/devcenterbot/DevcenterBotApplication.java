@@ -8,5 +8,6 @@ public class DevcenterBotApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DevcenterBotApplication.class, args);
+		MessageTest.test();
 	}
 }
