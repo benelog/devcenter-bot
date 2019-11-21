@@ -14,10 +14,16 @@ import org.eclipse.egit.github.core.service.IssueService;
 
 public class TitleScrapper {
 
-	public static void run() throws IOException {
+	static IssueQueue queue;
+
+	public TitleScrapper() {
+		queue = new IssueQueue();
+	}
+
+	public IssueQueue run() throws IOException {
 
 		//fileBase의 위치가 다를수도 있으므로..
-		String fileName =  "./src/main/resources/Files/log.txt";
+		String fileName = "./src/main/resources/Files/log.txt";
 		FileReader input = new FileReader(new File(fileName));
 		BufferedReader br = new BufferedReader(input);
 		int checkNumber = Integer.parseInt(br.readLine());
@@ -28,24 +34,19 @@ public class TitleScrapper {
 		List<Issue> listIssue = issueService.getIssues("ventulus95", "BaekjoonAnswer", filter);
 		int size = listIssue.size();
 		for (int num = checkNumber; num < size; num++) {
-			// System.out.print("Issue #" + (num + 1) + " :");
 			Issue currentIssue = listIssue.get(num);
-			IssueQueue queue = new IssueQueue();
-			queue.setterIssue(currentIssue);
-			// System.out.println(currentIssue.getTitle());
-			String issueTitle = currentIssue.getTitle();
+			queue.offer(currentIssue);
 		}
 		BufferedWriter out = new BufferedWriter(
 			new FileWriter(new File(fileName)));
 		System.out.println(size);
-		out.write(String.valueOf(size));
+		out.write(String.valueOf(size) + "\n");
 		out.flush();
 		out.close();
+
+		return queue;
 	}
 
-	public static void main(String[] args) throws IOException {
-		run();
-	}
 
 }
 
