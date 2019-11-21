@@ -38,8 +38,7 @@ public class KeywordChecker {
 					if ((checkIssue.getTitle()).contains(currKey[checkerTypeIndex])) {
 						int id = keywords[keyType].getId();
 						String issueNum = String.valueOf(checkIssue.getNumber());
-						BotRequest bot = classfiedBotRequest
-							(id, checkIssue.getTitle(), issueNum);
+						BotRequest bot = classfiedBotRequest(id, issueNum);
 
 						try {
 							botClassifier.classify(bot);
@@ -54,7 +53,7 @@ public class KeywordChecker {
 		}
 	}
 
-	public BotRequest classfiedBotRequest(int typeId, String title, String issueNumber) {
+	public BotRequest classfiedBotRequest(int typeId, String issueNumber) {
 		switch (typeId) {
 			case 1:
 				return BotRequest.SMART_EDITOR_REQUEST.issueNumber(issueNumber).build();
