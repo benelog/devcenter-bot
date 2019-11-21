@@ -51,37 +51,37 @@ public class BotRequest {
 		}
 	}
 
-	public final Builder SMART_EDITOR_REQUEST =
+	public static final Builder SMART_EDITOR_REQUEST =
 		new Builder()
 			.id(1)
 			.keyword(RequestType.SMART_EDITOR_TYPE);
 
-	public final Builder NAVER_APP_REQUEST =
+	public static final Builder NAVER_APP_REQUEST =
 		new Builder()
 			.id(2)
 			.keyword(RequestType.NAVER_APP_TYPE);
 
-	public final Builder CLOUD_FUNDING_REQUEST =
+	public static final Builder CLOUD_FUNDING_REQUEST =
 		new Builder()
 			.id(3)
 			.keyword(RequestType.CLOUD_FUNDING_TYPE);
 
-	public final Builder NAVER_PAY_REQUEST =
+	public static final Builder NAVER_PAY_REQUEST =
 		new Builder()
 			.id(4)
 			.keyword(RequestType.NAVER_PAY_TYPE);
 
-	public final Builder MAP_API_REQUEST =
+	public static final Builder MAP_API_REQUEST =
 		new Builder()
 			.id(5)
 			.keyword(RequestType.MAP_API_TYPE);
 
-	public final Builder BAND_API_TYPE =
+	public static final Builder BAND_API_TYPE =
 		new Builder()
 			.id(6)
 			.keyword(RequestType.BAND_API_TYPE);
 
-	public final Builder WHALE_TYPE =
+	public static final Builder WHALE_TYPE =
 		new Builder()
 			.id(7)
 			.keyword(RequestType.WHALE_TYPE);
