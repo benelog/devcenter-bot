@@ -14,6 +14,7 @@ public class BotRequest {
 		this.issueNumber = builder.issueNumber;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
