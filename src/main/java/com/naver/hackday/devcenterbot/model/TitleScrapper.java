@@ -1,0 +1,43 @@
+package com.naver.hackday.devcenterbot.model;
+
+import org.eclipse.egit.github.core.service.IssueService;
+
+import java.io.*;
+import java.util.HashMap;
+
+public class TitleScrapper {
+
+	public static void run () throws IOException {
+		//fileBase의 위치가 다를수도 있으므로.
+
+		String BaseUrl = "/Users/LeeChnagSup/Desktop/코딩/NaverHackDay2019";
+		FileReader input = new FileReader(new File(BaseUrl+"/devcenter-bot/src/main/resources/Files/log.txt"));
+		BufferedReader br = new BufferedReader(input);
+		int checkNumber = Integer.parseInt(br.readLine());
+
+		IssueService I = new IssueService();
+//		System.out.println(I.pageIssueEvents("ventulus95", "BaekjoonAnswer",1));
+		HashMap<String, String> k = new HashMap<String, String>();
+		k.put("direction","asc");
+		// 이슈는 무조건 숫자가 클수록 최신버전이 아님. 2. 0~10
+		int size = I.getIssues("ventulus95", "BaekjoonAnswer",k).size();
+		for(int num = checkNumber; num<size; num++){
+			System.out.print("Issue #"+(num+1)+" :");
+			System.out.println(I.getIssues("ventulus95", "BaekjoonAnswer",k).get(num).getTitle());
+			String IssueTitle = I.getIssues("ventulus95", "BaekjoonAnswer",k).get(num).getTitle();
+			System.out.println(IssueTitle.contains("네이버지도"));
+		}
+		BufferedWriter out = new BufferedWriter(new FileWriter(new File(BaseUrl+"/devcenter-bot/src/main/resources/Files/log.txt")));
+		System.out.println(size);
+		out.write(String.valueOf(size));
+		out.flush();
+		out.close();
+	}
+
+
+	public static void main(String[] args) throws IOException {
+		run();
+	}
+
+}
+
