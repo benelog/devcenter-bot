@@ -20,24 +20,26 @@ public class Message {
 		this.issueService = issueService;
 	}
 
-	public void setClient(GitHubClient client){
+	public void setClient(GitHubClient client) {
 		this.client = client;
 	}
 
-	public void setModel(MessageModel model){
+	public void setModel(MessageModel model) {
 		this.model = model;
 	}
 
-	Message(){
+	Message() {
 		client = new GitHubClient();
-		client.setCredentials("","");
+		client.setCredentials("", "");
 		client.setOAuth2Token("ee8e2420581221dc46085c8e4c156afb8cb63cb7");
 		issueService = new IssueService(client);
 	}
-	Message(GitHubClient client){
+
+	Message(GitHubClient client) {
 		issueService = new IssueService(client);
 	}
-	Message(IssueService service){
+
+	Message(IssueService service) {
 		issueService = service;
 	}
 
@@ -45,7 +47,7 @@ public class Message {
 		//:System.out.println(model.getName() +"/"+ model.getRepoName() +"/"+ model.getIssueNum() +"/"+ model.getComment());
 		try {
 			issueService.createComment(model.getName(), model.getRepoName(), model.getIssueNum(), model.getComment());
-		}catch (IOException e){
+		} catch (IOException e) {
 
 		}
 	}

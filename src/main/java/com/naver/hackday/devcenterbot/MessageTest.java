@@ -7,7 +7,7 @@ import com.naver.hackday.devcenterbot.model.MessageModel;
 
 @Component
 public class MessageTest {
-	public static void test(){
+	public static void test() {
 		Message message;
 		MessageModel model = new MessageModel();
 
