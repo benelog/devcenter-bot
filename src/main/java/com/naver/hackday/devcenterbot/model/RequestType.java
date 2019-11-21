@@ -12,7 +12,8 @@ public enum RequestType {
 
 	private String word = "";
 
-	RequestType() {}
+	RequestType() {
+	}
 
 	RequestType(String word) {
 		this.word = word;
