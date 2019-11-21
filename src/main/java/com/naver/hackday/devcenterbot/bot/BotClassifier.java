@@ -2,7 +2,6 @@ package com.naver.hackday.devcenterbot.bot;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -23,10 +22,6 @@ public class BotClassifier {
 	@Value("${spring.social.github.repo}")
 	private String repo;
 
-	BotClassifier() {
-	}
-
-	@Autowired
 	public BotClassifier(BrainDao brainDao, Message message) {
 		this.brainDao = brainDao;
 		this.message = message;

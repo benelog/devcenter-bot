@@ -1,8 +1,5 @@
 package com.naver.hackday.devcenterbot.model;
 
-import java.util.ArrayList;
-import java.util.Queue;
-
 import org.eclipse.egit.github.core.Issue;
 
 public class KeywordChecker {
@@ -23,6 +20,9 @@ public class KeywordChecker {
 		for (int keyType = 0; keyType < keywords.length; keyType++) {
 			String[] currKey = keywords[keyType].getKeywords();
 			for (int checkerTypeIndex = 0; checkerTypeIndex < currKey.length; checkerTypeIndex++) {
+				if (checkIssue == null) {
+					break;
+				}
 				if ((checkIssue.getTitle()).contains(currKey[checkerTypeIndex])) {
 					int id = keywords[keyType].getId();
 					BotRequest bot = classfiedBotRequest(id, checkIssue.getTitle());

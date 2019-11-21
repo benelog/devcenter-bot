@@ -5,26 +5,21 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.naver.hackday.devcenterbot.entity.Brain;
 import com.naver.hackday.devcenterbot.model.BotRequest;
 import com.naver.hackday.devcenterbot.persistence.BrainDao;
 
 @SpringBootTest
+@Transactional
 public class BotClassifierTest {
 
+	@Autowired
 	private BotClassifier botClassifier;
+
+	@Autowired
 	private BrainDao brainDao;
-
-	@Autowired
-	public void setBotClassifier(BotClassifier botClassifier) {
-		this.botClassifier = botClassifier;
-	}
-
-	@Autowired
-	public void setBrainDao(BrainDao brainDao) {
-		this.brainDao = brainDao;
-	}
 
 	@Test
 	void checkRightAction() throws IOException {
