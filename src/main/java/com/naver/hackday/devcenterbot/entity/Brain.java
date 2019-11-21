@@ -30,9 +30,8 @@ public class Brain {
 
 	@Override
 	public String toString() {
-		return "Brain{" +
-			"id=" + id +
-			", comment='" + comment + '\'' +
-			'}';
+		return "Brain{"
+			+ "id=" + id
+			+ ", comment='" + comment + '\'' + '}';
 	}
 }
