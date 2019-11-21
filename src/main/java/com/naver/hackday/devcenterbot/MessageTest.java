@@ -1,6 +1,7 @@
 package com.naver.hackday.devcenterbot;
 
-import org.eclipse.egit.github.core.client.GitHubClient;
+import java.io.IOException;
+
 import org.springframework.stereotype.Component;
 
 import com.naver.hackday.devcenterbot.model.MessageModel;
@@ -19,6 +20,12 @@ public class MessageTest {
 		model.setIssueNum("2");
 		model.setComment("dev test");
 		message.setModel(model);
-		message.pushMessage();
+
+		try {
+			message.pushMessage();
+		} catch (IOException e) {
+			e.printStackTrace();
+			// 로깅 처리 필요
+		}
 	}
 }

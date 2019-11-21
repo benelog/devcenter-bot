@@ -43,12 +43,10 @@ public class Message {
 		issueService = service;
 	}
 
-	void pushMessage() {
-		//:System.out.println(model.getName() +"/"+ model.getRepoName() +"/"+ model.getIssueNum() +"/"+ model.getComment());
-		try {
-			issueService.createComment(model.getName(), model.getRepoName(), model.getIssueNum(), model.getComment());
-		} catch (IOException e) {
-
-		}
+	void pushMessage() throws IOException {
+		issueService.createComment(
+			model.getName(), model.getRepoName(),
+			model.getIssueNum(), model.getComment()
+		);
 	}
 }
