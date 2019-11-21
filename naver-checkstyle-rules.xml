@@ -55,7 +55,7 @@ The following rules in the Naver coding convention cannot be checked by this con
 
 		<!-- [list-uppercase-abbr] -->
 		<module name="AbbreviationAsWordInName">
-			<property name="ignoreFinal" value="false"/>
+			<property name="ignoreFinal" value="true"/>
 			<property name="allowedAbbreviationLength" value="1"/>
 			<message key="abbreviation.as.word"
 			 value="[list-uppercase-abbr] Abbreviation in name ''{0}'' must contain no more than {1}"/>
