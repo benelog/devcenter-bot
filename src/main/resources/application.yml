@@ -13,3 +13,7 @@ logging:
   level:
     org.springframework.jdbc.core: TRACE
     org.springframework.jdbc.core.StatementCreatorUtils: TRACE
+
+id:
+password:
+token: ee8e2420581221dc46085c8e4c156afb8cb63cb7
