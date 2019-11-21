@@ -30,6 +30,9 @@ public class Brain {
 
 	@Override
 	public String toString() {
-		return super.toString();
+		return "Brain{" +
+			"id=" + id +
+			", comment='" + comment + '\'' +
+			'}';
 	}
 }
