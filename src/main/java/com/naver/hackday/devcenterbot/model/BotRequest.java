@@ -3,6 +3,7 @@ package com.naver.hackday.devcenterbot.model;
 public class BotRequest {
 	private int id;
 	private RequestType keyword;
+	private int issueNumber;
 
 	public BotRequest() {
 	}
@@ -10,6 +11,7 @@ public class BotRequest {
 	public BotRequest(Builder builder) {
 		this.id = builder.id;
 		this.keyword = builder.keyword;
+		this.issueNumber = builder.issueNumber;
 	}
 
 	public void setId(int id) {
@@ -17,7 +19,7 @@ public class BotRequest {
 	}
 
 	public int getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setKeyword(RequestType keyword) {
@@ -25,15 +27,25 @@ public class BotRequest {
 	}
 
 	public RequestType getKeyword() {
-		return keyword;
+		return this.keyword;
+	}
+
+	public void setIssueNumber(int issueNumber) {
+		this.issueNumber = issueNumber;
+	}
+
+	public int getIssueNumber() {
+		return this.issueNumber;
 	}
 
 	public static class Builder {
 		int id;
 		RequestType keyword;
+		int issueNumber;
 
 		public Builder() {
 			this.id = 0;
+			this.issueNumber = 0;
 		}
 
 		public Builder id(int id) {
@@ -43,6 +55,11 @@ public class BotRequest {
 
 		public Builder keyword(RequestType keyword) {
 			this.keyword = keyword;
+			return this;
+		}
+
+		public Builder issueNumber(int issueNumber) {
+			this.issueNumber = issueNumber;
 			return this;
 		}
 

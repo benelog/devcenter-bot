@@ -15,12 +15,13 @@ class DevcenterBotApplicationTests {
 	}
 
 	@Test
-	public void testBotRequest() {
-		BotRequest botRequest = new BotRequest();
-		String testing = "smart-editor";
-		BotRequest newRequest = BotRequest.SMART_EDITOR_REQUEST.build();
-		assertThat(newRequest.getId()).isEqualTo(1);
-		assertThat(newRequest.getKeyword().getWord()).isEqualTo(testing);
+	public void testNewBotRequest() {
+		BotRequest botRequest = BotRequest.SMART_EDITOR_REQUEST.issueNumber(2).build();
+		String keyword = botRequest.getKeyword().getWord();
+		int issueNumber = botRequest.getIssueNumber();
+
+		assertThat(keyword).isEqualTo("smart-editor");
+		assertThat(issueNumber).isEqualTo(2);
 	}
 
 }
