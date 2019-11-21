@@ -2,11 +2,8 @@ package com.naver.hackday.devcenterbot;
 
 import java.io.IOException;
 
-import org.springframework.stereotype.Component;
-
 import com.naver.hackday.devcenterbot.model.MessageModel;
 
-@Component
 public class MessageTest {
 	public static void test() {
 		Message message;
@@ -18,7 +15,7 @@ public class MessageTest {
 		model.setName("kkyehit");
 		model.setRepoName("egit-github-test");
 		model.setIssueNum("2");
-		model.setComment("dev test");
+		model.setComment("dev test test");
 		message.setModel(model);
 
 		try {
