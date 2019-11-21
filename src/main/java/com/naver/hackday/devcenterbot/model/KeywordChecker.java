@@ -1,6 +1,9 @@
 package com.naver.hackday.devcenterbot.model;
 
 import java.util.ArrayList;
+import java.util.Queue;
+
+import org.eclipse.egit.github.core.Issue;
 
 public class KeywordChecker {
 	private FilteringKeyword[] keywords = new FilteringKeyword[7];
@@ -15,24 +18,38 @@ public class KeywordChecker {
 		keywords[6] = new FilteringKeyword(7, new String[] {"네이버 웨일", "웨일", "웨일브라우저", "네이버웨일", "네이버웨일브라우저"});
 	}
 
-	public void checkToTitle(String title) {
+	public void checkToTitle(IssueQueue queue) {
+		Issue checkIssue = queue.poll();
 		for (int keyType = 0; keyType < keywords.length; keyType++) {
 			String[] currKey = keywords[keyType].getKeywords();
-			int totalTypeKeyword = currKey.length;
-			for (int checkerTypeIndex = 0; checkerTypeIndex < totalTypeKeyword; checkerTypeIndex++) {
-				if (title.contains(currKey[checkerTypeIndex])) {
-					classfiedBotRequest(keywords[keyType].getId(), title);
+			for (int checkerTypeIndex = 0; checkerTypeIndex < currKey.length; checkerTypeIndex++) {
+				if ((checkIssue.getTitle()).contains(currKey[checkerTypeIndex])) {
+					int id = keywords[keyType].getId();
+					BotRequest bot = classfiedBotRequest(id, checkIssue.getTitle());
 					break;
 				}
 			}
 		}
 	}
 
-	public void classfiedBotRequest(int typeId, String title) {
+	public BotRequest classfiedBotRequest(int typeId, String title) {
 		switch (typeId) {
 			case 1:
-				BotRequest.MAP_API_REQUEST.build();
-
+				return BotRequest.SMART_EDITOR_REQUEST.build();
+			case 2:
+				return BotRequest.NAVER_APP_REQUEST.build();
+			case 3:
+				return BotRequest.CLOUD_FUNDING_REQUEST.build();
+			case 4:
+				return BotRequest.NAVER_PAY_REQUEST.build();
+			case 5:
+				return BotRequest.MAP_API_REQUEST.build();
+			case 6:
+				return BotRequest.BAND_API_TYPE.build();
+			case 7:
+				return BotRequest.WHALE_TYPE.build();
+			default:
+				return new BotRequest();
 		}
 	}
 }
