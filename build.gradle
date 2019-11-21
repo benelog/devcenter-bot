@@ -43,7 +43,7 @@ test {
 }
 
 editorconfig {
-	excludes = ['build', 'out']
+	excludes = ['build/**', 'out/**', '.github/**']
 }
 
 checkstyle {
