@@ -16,9 +16,9 @@ class DevcenterBotApplicationTests {
 
 	@Test
 	public void testNewBotRequest() {
-		BotRequest botRequest = BotRequest.SMART_EDITOR_REQUEST.issueNumber(2).build();
+		BotRequest botRequest = BotRequest.SMART_EDITOR_REQUEST.issueNumber(String.valueOf(2)).build();
 		String keyword = botRequest.getKeyword().getWord();
-		int issueNumber = botRequest.getIssueNumber();
+		int issueNumber = Integer.parseInt(botRequest.getIssueNumber());
 
 		assertThat(keyword).isEqualTo("smart-editor");
 		assertThat(issueNumber).isEqualTo(2);
