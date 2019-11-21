@@ -2,11 +2,8 @@ package com.naver.hackday.devcenterbot;
 
 import java.io.IOException;
 
-import org.springframework.stereotype.Component;
-
 import com.naver.hackday.devcenterbot.model.MessageModel;
 
-@Component
 public class MessageTest {
 	public static void test() {
 		Message message;
