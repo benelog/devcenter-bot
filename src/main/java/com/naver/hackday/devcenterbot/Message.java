@@ -43,7 +43,7 @@ public class Message {
 		issueService = service;
 	}
 
-	void pushMessage() throws IOException {
+	public void pushMessage() throws IOException {
 		issueService.createComment(
 			model.getName(), model.getRepoName(),
 			model.getIssueNum(), model.getComment()
