@@ -1,11 +1,11 @@
 package com.naver.hackday.devcenterbot;
 
-import com.naver.hackday.devcenterbot.model.BotRequest;
-import com.naver.hackday.devcenterbot.model.RequestType;
+import static org.assertj.core.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import com.naver.hackday.devcenterbot.model.BotRequest;
 
 @SpringBootTest
 class DevcenterBotApplicationTests {
