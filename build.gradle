@@ -1,0 +1,52 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'org.ec4j.editorconfig' version '0.0.3'
+	id 'checkstyle'
+}
+
+group = 'com.naver.hackday'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '13'
+
+compileJava.options.encoding = 'UTF-8'
+compileTestJava.options.encoding = 'UTF-8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation("com.h2database:h2")
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+test {
+	useJUnitPlatform()
+}
+
+editorconfig {
+	excludes = ['build']
+}
+
+checkstyle {
+	configFile = file("${rootDir}/naver-checkstyle-rules.xml")
+	configProperties = [config_loc: "${rootDir}"]
+	maxWarnings = 0
+	toolVersion ="8.24"
+}
+
+check.dependsOn editorconfigCheck
