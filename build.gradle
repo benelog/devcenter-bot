@@ -44,7 +44,7 @@ editorconfig {
 
 checkstyle {
 	configFile = file("${rootDir}/naver-checkstyle-rules.xml")
-	configProperties = [config_loc: "${rootDir}"]
+	configProperties = ["suppressionFile" : "${rootDir}/naver-checkstyle-suppressions.xml"]
 	maxWarnings = 0
 	toolVersion ="8.24"
 }
