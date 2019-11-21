@@ -34,7 +34,7 @@ public class BotClassifier {
 
 	public void classify(BotRequest request) throws IOException {
 		int id = request.getId();
-		String issueNumber = String.valueOf(request.getIssueNumber());
+		String issueNumber = request.getIssueNumber();
 		String comment;
 
 		comment = fetchComment(id);
