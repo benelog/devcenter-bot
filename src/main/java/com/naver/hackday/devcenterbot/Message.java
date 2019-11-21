@@ -1,10 +1,7 @@
 package com.naver.hackday.devcenterbot;
 
-import java.io.BufferedInputStream;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.Properties;
 
 import org.eclipse.egit.github.core.client.GitHubClient;
