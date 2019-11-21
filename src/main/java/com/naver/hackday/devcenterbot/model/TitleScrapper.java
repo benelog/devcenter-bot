@@ -31,7 +31,7 @@ public class TitleScrapper {
 		HashMap<String, String> filter = new HashMap<String, String>();
 		filter.put("direction", "asc");
 		// 이슈는 무조건 숫자가 클수록 최신버전이 아님. 2. 0~10..
-		List<Issue> listIssue = issueService.getIssues("ventulus95", "BaekjoonAnswer", filter);
+		List<Issue> listIssue = issueService.getIssues("kkyehit", "egit-github-test", filter);
 		int size = listIssue.size();
 		for (int num = checkNumber; num < size; num++) {
 			Issue currentIssue = listIssue.get(num);
@@ -39,7 +39,6 @@ public class TitleScrapper {
 		}
 		BufferedWriter out = new BufferedWriter(
 			new FileWriter(new File(fileName)));
-		System.out.println(size);
 		out.write(String.valueOf(size) + "\n");
 		out.flush();
 		out.close();
