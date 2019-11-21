@@ -7,9 +7,9 @@ spring:
   social:
     github:
       user: kkyehit
-      password:
+      password: gosemvhs33
       repo: egit-github-test
-      token:
+      token: ee8e2420581221dc46085c8e4c156afb8cb63cb7
 
 logging:
   level:

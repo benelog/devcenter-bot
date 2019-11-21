@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.naver.hackday.devcenterbot.model.BotRequest;
@@ -13,6 +14,9 @@ import com.naver.hackday.devcenterbot.model.TitleScrapper;
 
 @SpringBootTest
 class DevcenterBotApplicationTests {
+
+	@Autowired
+	KeywordChecker keywordChecker;
 
 	@Test
 	void contextLoads() {
@@ -31,7 +35,7 @@ class DevcenterBotApplicationTests {
 	@Test
 	public void testQueue() throws IOException {
 		TitleScrapper titleScrapper = new TitleScrapper();
-		KeywordChecker keywordChecker = new KeywordChecker();
+		//		KeywordChecker keywordChecker = new KeywordChecker();
 		keywordChecker.checkToTitle(titleScrapper.run());
 
 	}
