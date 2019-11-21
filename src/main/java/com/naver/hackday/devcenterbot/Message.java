@@ -1,26 +1,40 @@
 package com.naver.hackday.devcenterbot;
 
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Properties;
+
+import javax.annotation.PostConstruct;
 
 import org.eclipse.egit.github.core.client.GitHubClient;
 import org.eclipse.egit.github.core.service.IssueService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import com.naver.hackday.devcenterbot.model.MessageModel;
 
+@Component
 public class Message {
+	private final Logger logger = LoggerFactory.getLogger(Message.class);
+
 	private IssueService issueService;
 
 	private GitHubClient client;
 
+	@Value("${token}")
 	private String token;
 
+	@Value("${id}")
 	private String id;
 
+	@Value("${password}")
 	private String password;
 
 	private MessageModel model;
+
+	public Message() {
+
+	}
 
 	public void setIssueService(IssueService issueService) {
 		this.issueService = issueService;
@@ -34,26 +48,14 @@ public class Message {
 		this.model = model;
 	}
 
-	Message() {
-		Properties properties;
-		try {
-			FileReader fileReader = new FileReader("src\\main\\resources\\application.properties");
-			properties = new Properties();
+	@PostConstruct
+	public void init() {
+		logger.info("id : {},  password : {},  token {} ", id, password, token);
 
-			properties.load(fileReader);
-			id = properties.getProperty("id");
-			password = properties.getProperty("password");
-			token = properties.getProperty("token");
-
-			System.out.println("id : " + id + " password : " + password + " token : " + token);
-
-			client = new GitHubClient();
-			client.setCredentials(id, password);
-			client.setOAuth2Token(token);
-			issueService = new IssueService(client);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		client = new GitHubClient();
+		client.setCredentials(id, password);
+		client.setOAuth2Token(token);
+		issueService = new IssueService(client);
 	}
 
 	Message(GitHubClient client) {
@@ -64,7 +66,7 @@ public class Message {
 		issueService = service;
 	}
 
-	void pushMessage() throws IOException {
+	public void pushMessage() throws IOException {
 		issueService.createComment(
 			model.getName(), model.getRepoName(),
 			model.getIssueNum(), model.getComment()
