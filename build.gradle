@@ -53,3 +53,8 @@ checkstyle {
 }
 
 check.dependsOn editorconfigCheck
+
+bootjar {
+	archiveFileName = 'QA.jar'
+	archiveVersion = "0.0.0"
+}

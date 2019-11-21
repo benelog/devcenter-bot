@@ -1,14 +1,21 @@
 package com.naver.hackday.devcenterbot.model;
 
+import java.io.IOException;
+
 import org.eclipse.egit.github.core.Issue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import com.naver.hackday.devcenterbot.bot.BotClassifier;
 
 @Component
 public class KeywordChecker {
 	private FilteringKeyword[] keywords = new FilteringKeyword[7];
+	private BotClassifier classifier;
+
+	@Autowired
+	public void setClassifier(BotClassifier botClassifier) {
+		this.classifier = botClassifier;
+	}
 
 	@Autowired
 	BotClassifier botClassifier;
@@ -23,14 +30,13 @@ public class KeywordChecker {
 		keywords[6] = new FilteringKeyword(7, new String[] {"네이버 웨일", "웨일", "웨일브라우저", "네이버웨일", "네이버웨일브라우저"});
 	}
 
-	public void checkToTitle(IssueQueue queue) {
+	public void checkToTitle(IssueQueue queue) throws IOException {
 		while (!queue.isEmpty()) {
 			Issue checkIssue = queue.poll();
 			System.out.println(checkIssue.getTitle());
 			for (int keyType = 0; keyType < keywords.length; keyType++) {
 				String[] currKey = keywords[keyType].getKeywords();
 				for (int checkerTypeIndex = 0; checkerTypeIndex < currKey.length; checkerTypeIndex++) {
-
 					if (checkIssue == null) {
 						break;
 					}
@@ -38,14 +44,7 @@ public class KeywordChecker {
 					if ((checkIssue.getTitle()).contains(currKey[checkerTypeIndex])) {
 						int id = keywords[keyType].getId();
 						String issueNum = String.valueOf(checkIssue.getNumber());
-						BotRequest bot = classfiedBotRequest(id, issueNum);
-
-						try {
-							botClassifier.classify(bot);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-
+						classfiedBotRequest(id, checkIssue.getTitle(), issueNum);
 						break;
 					}
 				}
@@ -53,24 +52,24 @@ public class KeywordChecker {
 		}
 	}
 
-	public BotRequest classfiedBotRequest(int typeId, String issueNumber) {
+	public void classfiedBotRequest(int typeId, String title, String issueNum) throws IOException {
 		switch (typeId) {
 			case 1:
-				return BotRequest.SMART_EDITOR_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.SMART_EDITOR_REQUEST.issueNumber(issueNum).build());
 			case 2:
-				return BotRequest.NAVER_APP_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.NAVER_APP_REQUEST.issueNumber(issueNum).build());
 			case 3:
-				return BotRequest.CLOUD_FUNDING_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.CLOUD_FUNDING_REQUEST.issueNumber(issueNum).build());
 			case 4:
-				return BotRequest.NAVER_PAY_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.NAVER_PAY_REQUEST.issueNumber(issueNum).build());
 			case 5:
-				return BotRequest.MAP_API_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.MAP_API_REQUEST.issueNumber(issueNum).build());
 			case 6:
-				return BotRequest.BAND_API_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.BAND_API_TYPE.issueNumber(issueNum).build());
 			case 7:
-				return BotRequest.WHALE_REQUEST.issueNumber(issueNumber).build();
+				classifier.classify(BotRequest.WHALE_TYPE.issueNumber(issueNum).build());
 			default:
-				return new BotRequest();
+				new BotRequest();
 		}
 	}
 }
