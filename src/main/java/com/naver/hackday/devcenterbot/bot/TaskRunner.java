@@ -17,6 +17,7 @@ import com.naver.hackday.devcenterbot.model.TitleScrapper;
 public class TaskRunner {
 	private static final Logger logger = LoggerFactory.getLogger(TaskRunner.class);
 
+	private static final int BOT_SCHEDULE_PERIOD = 20000;
 	private TitleScrapper titleScrapper;
 	private KeywordChecker keywordChecker;
 
@@ -29,7 +30,7 @@ public class TaskRunner {
 		this.titleScrapper = titleScrapper;
 	}
 
-	@Scheduled(fixedDelay = 5000)
+	@Scheduled(fixedDelay = BOT_SCHEDULE_PERIOD)
 	private void execute() throws IOException {
 		logger.info("[TaskRunner] Run Bot !");
 
