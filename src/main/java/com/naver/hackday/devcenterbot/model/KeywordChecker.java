@@ -66,9 +66,9 @@ public class KeywordChecker {
 			case 5:
 				return BotRequest.MAP_API_REQUEST.issueNumber(issueNumber).build();
 			case 6:
-				return BotRequest.BAND_API_TYPE.issueNumber(issueNumber).build();
+				return BotRequest.BAND_API_REQUEST.issueNumber(issueNumber).build();
 			case 7:
-				return BotRequest.WHALE_TYPE.issueNumber(issueNumber).build();
+				return BotRequest.WHALE_REQUEST.issueNumber(issueNumber).build();
 			default:
 				return new BotRequest();
 		}

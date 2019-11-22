@@ -94,12 +94,12 @@ public class BotRequest {
 			.id(5)
 			.keyword(RequestType.MAP_API_TYPE);
 
-	public static final Builder BAND_API_TYPE =
+	public static final Builder BAND_API_REQUEST =
 		new Builder()
 			.id(6)
 			.keyword(RequestType.BAND_API_TYPE);
 
-	public static final Builder WHALE_TYPE =
+	public static final Builder WHALE_REQUEST =
 		new Builder()
 			.id(7)
 			.keyword(RequestType.WHALE_TYPE);
