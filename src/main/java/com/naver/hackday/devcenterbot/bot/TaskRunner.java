@@ -24,14 +24,15 @@ public class TaskRunner {
 	}
 
 	@Autowired
-	public TaskRunner(KeywordChecker keywordChecker) {
+	public TaskRunner(KeywordChecker keywordChecker, TitleScrapper titleScrapper) {
 		this.keywordChecker = keywordChecker;
+		this.titleScrapper = titleScrapper;
 	}
 
 	@Scheduled(fixedDelay = 5000)
 	private void execute() throws IOException {
 		logger.info("[TaskRunner] Run Bot !");
-		titleScrapper = new TitleScrapper();
+
 		keywordChecker.checkToTitle(titleScrapper.run());
 	}
 
