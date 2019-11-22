@@ -1,14 +1,9 @@
 package com.naver.hackday.devcenterbot.model;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
 
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.service.IssueService;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +12,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class TitleScrapper {
 
-	static IssueQueue queue;
+	private IssueQueue queue;
+	private IssueService issueService;
 
 	@Value("${spring.social.github.user}")
 	private String user;
@@ -27,32 +23,17 @@ public class TitleScrapper {
 
 	public TitleScrapper() {
 		queue = new IssueQueue();
+		issueService = new IssueService();
 	}
 
 	public IssueQueue run() throws IOException {
 
-		String fileName = "./src/main/resources/Files/log.txt";
-		FileReader input = new FileReader(new File(fileName));
-		BufferedReader br = new BufferedReader(input);
-		int checkNumber = Integer.parseInt(br.readLine());
-		IssueService issueService = new IssueService();
-		HashMap<String, String> filter = new HashMap<String, String>();
+		List<Issue> listIssue =
+			issueService.getIssues(this.user, this.repo, Collections.singletonMap("state", "open"));
 
-		filter.put("direction", "asc");
-		List<Issue> listIssue = issueService.getIssues(this.user, this.repo, filter);
-
-		int size = listIssue.size();
-		for (int num = checkNumber; num < size; num++) {
-			Issue currentIssue = listIssue.get(num);
-			queue.offer(currentIssue);
+		for (Issue item : listIssue) {
+			queue.offer(item);
 		}
-
-		BufferedWriter out = new BufferedWriter(
-			new FileWriter(new File(fileName)));
-
-		out.write(String.valueOf(size) + "\n");
-		out.flush();
-		out.close();
 
 		return queue;
 	}

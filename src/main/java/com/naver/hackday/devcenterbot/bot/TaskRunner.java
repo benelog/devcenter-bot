@@ -29,7 +29,7 @@ public class TaskRunner {
 		this.titleScrapper = titleScrapper;
 	}
 
-	@Scheduled(fixedDelay = 5000)
+	@Scheduled(fixedDelay = 10000)
 	private void execute() throws IOException {
 		logger.info("[TaskRunner] Run Bot !");
 
