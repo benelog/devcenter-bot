@@ -8,7 +8,7 @@ spring:
     github:
       user: kkyehit
       repo: egit-github-test
-      token: ee8e2420581221dc46085c8e4c156afb8cb63cb7
+      #token: OS환경변수나 -Dsocial.github.token 값 등으로 설정
 
 logging:
   level:
