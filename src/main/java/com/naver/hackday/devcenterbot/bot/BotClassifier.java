@@ -36,7 +36,6 @@ public class BotClassifier {
 		String comment;
 
 		comment = fetchComment(id);
-		//comment = "123";
 		submitComment(issueNumber, comment);
 	}
 
