@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.service.IssueService;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +39,7 @@ public class TitleScrapper {
 			createdAt = item.getCreatedAt().getTime();
 			now = new Date().getTime();
 
-			if(now - createdAt < BOT_SCHEDULE_PERIOD) {
+			if (now - createdAt < BOT_SCHEDULE_PERIOD) {
 				queue.offer(item);
 			}
 		}
