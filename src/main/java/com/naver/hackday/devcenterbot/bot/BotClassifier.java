@@ -2,10 +2,12 @@ package com.naver.hackday.devcenterbot.bot;
 
 import java.io.IOException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.naver.hackday.devcenterbot.Message;
+import com.naver.hackday.devcenterbot.entity.Brain;
 import com.naver.hackday.devcenterbot.model.BotRequest;
 import com.naver.hackday.devcenterbot.model.MessageModel;
 import com.naver.hackday.devcenterbot.persistence.BrainDao;
@@ -22,6 +24,7 @@ public class BotClassifier {
 	@Value("${spring.social.github.repo}")
 	private String repo;
 
+	@Autowired
 	public BotClassifier(BrainDao brainDao, Message message) {
 		this.brainDao = brainDao;
 		this.message = message;
@@ -32,8 +35,7 @@ public class BotClassifier {
 		String issueNumber = request.getIssueNumber();
 		String comment;
 
-		//comment = fetchComment(id);
-		comment = "123";
+		comment = fetchComment(id);
 		submitComment(issueNumber, comment);
 	}
 
