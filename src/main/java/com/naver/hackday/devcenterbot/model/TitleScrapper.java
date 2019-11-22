@@ -11,10 +11,19 @@ import java.util.List;
 
 import org.eclipse.egit.github.core.Issue;
 import org.eclipse.egit.github.core.service.IssueService;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TitleScrapper {
 
 	static IssueQueue queue;
+
+	@Value("${spring.social.github.user}")
+	private String user;
+
+	@Value("${spring.social.github.repo}")
+	private String repo;
 
 	public TitleScrapper() {
 		queue = new IssueQueue();
@@ -22,30 +31,31 @@ public class TitleScrapper {
 
 	public IssueQueue run() throws IOException {
 
-		//fileBase의 위치가 다를수도 있으므로..
 		String fileName = "./src/main/resources/Files/log.txt";
 		FileReader input = new FileReader(new File(fileName));
 		BufferedReader br = new BufferedReader(input);
 		int checkNumber = Integer.parseInt(br.readLine());
 		IssueService issueService = new IssueService();
 		HashMap<String, String> filter = new HashMap<String, String>();
+
 		filter.put("direction", "asc");
-		// 이슈는 무조건 숫자가 클수록 최신버전이 아님. 2. 0~10..
-		List<Issue> listIssue = issueService.getIssues("kkyehit", "egit-github-test", filter);
+		List<Issue> listIssue = issueService.getIssues(this.user, this.repo, filter);
+
 		int size = listIssue.size();
 		for (int num = checkNumber; num < size; num++) {
 			Issue currentIssue = listIssue.get(num);
 			queue.offer(currentIssue);
 		}
+
 		BufferedWriter out = new BufferedWriter(
 			new FileWriter(new File(fileName)));
+
 		out.write(String.valueOf(size) + "\n");
 		out.flush();
 		out.close();
 
 		return queue;
 	}
-
 
 }
 
