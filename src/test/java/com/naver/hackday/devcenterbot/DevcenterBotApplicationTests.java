@@ -16,7 +16,9 @@ import com.naver.hackday.devcenterbot.model.TitleScrapper;
 class DevcenterBotApplicationTests {
 
 	@Autowired
-	KeywordChecker keywordChecker;
+	private TitleScrapper titleScrapper;
+	@Autowired
+	private KeywordChecker keywordChecker;
 
 	@Test
 	void contextLoads() {
@@ -34,9 +36,6 @@ class DevcenterBotApplicationTests {
 
 	@Test
 	public void testQueue() throws IOException {
-		TitleScrapper titleScrapper = new TitleScrapper();
-		//		KeywordChecker keywordChecker = new KeywordChecker();
 		keywordChecker.checkToTitle(titleScrapper.run());
-
 	}
 }
