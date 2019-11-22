@@ -20,7 +20,7 @@ public class Message {
 	private MessageModel model;
 
 	public Message(
-		@Value("${spring.social.github.token}") String token) {
+		@Value("${spring.social.github.token:#{systemProperties['GITHUB_TOKEN']}}") String token) {
 
 		logger.info("token={}", token);
 		var client = new GitHubClient();
