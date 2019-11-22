@@ -1,6 +1,5 @@
 package com.naver.hackday.devcenterbot.model;
 
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
