@@ -39,6 +39,9 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	def token = System.getProperty("spring.social.github.token")
+	println("Github Access Token : ${token}")
+	systemProperty "spring.social.github.token", token
 }
 
 editorconfig {

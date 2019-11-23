@@ -17,15 +17,13 @@ public class Message {
 
 	private IssueService issueService;
 
-	private GitHubClient client;
-
 	private MessageModel model;
 
 	public Message(
 		@Value("${spring.social.github.token}") String token) {
 
-		logger.info("token={} ", token);
-		client = new GitHubClient();
+		logger.info("token={}", token);
+		var client = new GitHubClient();
 		client.setOAuth2Token(token);
 		issueService = new IssueService(client);
 	}
