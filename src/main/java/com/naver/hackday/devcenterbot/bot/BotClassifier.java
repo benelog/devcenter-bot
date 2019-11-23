@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.naver.hackday.devcenterbot.Message;
-import com.naver.hackday.devcenterbot.entity.Brain;
 import com.naver.hackday.devcenterbot.model.BotRequest;
 import com.naver.hackday.devcenterbot.model.MessageModel;
 import com.naver.hackday.devcenterbot.persistence.BrainDao;
@@ -18,10 +17,10 @@ public class BotClassifier {
 	private MessageModel model;
 	private Message message;
 
-	@Value("${spring.social.github.user}")
+	@Value("${github.user}")
 	private String user;
 
-	@Value("${spring.social.github.repo}")
+	@Value("${github.repo}")
 	private String repo;
 
 	@Autowired
