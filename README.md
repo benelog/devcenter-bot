@@ -65,5 +65,5 @@ Classifer를 통해 message출력되는 DB의 Comment 메세지 값들을 table�
 
 ## 기술적인 추가사항
 
--Dspring.social.github.token='' 으로 옵션 추가하면 github token로 갈아끼울수 있습니다. (파일에 있는것보다 -D 옵션이 우선순위가 높습니다.)
+-Dgithub.token='' 으로 옵션 추가하면 github token로 갈아끼울수 있습니다. (파일에 있는것보다 -D 옵션이 우선순위가 높습니다.)
 -Dspring.h2.console.settings.web-allow-others=true
