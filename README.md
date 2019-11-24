@@ -71,29 +71,30 @@ Classifer를 통해 message출력되는 DB의 Comment 메세지 값들을 table�
 ## 서버 배포 방식
 
 
-예상보다 서버 배포 방식이 좀 어렵지 않아서 스프링 부트의 유용성을 많이 느낄 수 있었습니다.  
-   
-1. 빌드를 하기 위해서는 gradle의 build를 이용합니다. build.gradle에 밑의 코드를 이용하면,
+예상보다 서버 배포 방식이 좀 어렵지 않아서 스프링 부트의 유용성을 많이 느낄 수 있었습니다.    
 
+1. 빌드를 하기 위해서는 gradle의 build를 이용합니다.    
+build.gradle에 밑의 코드를 이용하면,
 `bootjar {
 	archiveFileName = 'QA.jar'
 	archiveVersion = "0.0.0"
 }
 `
-빌드시의 .jar파일의 파일명을 지정하거나, 버젼명을 따로 지정할 수 있습니다.
+빌드시의 .jar파일의 파일명을 지정하거나, 버젼명을 따로 지정할 수 있습니다.    
 단, 지정하지 않을시 알아서 버젼과 이름을 붙혀줍니다. 예를 들면 이런식으로요.
-`devcenter-bot-0.0.1-SNAPSHOT.jar`
-명령어인 `./gredlew bootjar`를 이용하거나 
-
-![스크린샷 2019-11-25 오전 12 09 32](https://user-images.githubusercontent.com/17822723/69496751-b051bd00-0f18-11ea-853e-73988e52a861.png)
+`devcenter-bot-0.0.1-SNAPSHOT.jar`    
+    
+명령어인 `./gredlew bootjar`를 이용하거나    
+![스크린샷 2019-11-25 오전 12 09 32](https://user-images.githubusercontent.com/17822723/69496751-b051bd00-0f18-11ea-853e-73988e52a861.png)    
 이미지 속의 bootjar를 이용합니다.
 
-2. 이러면 파일이 build 폴더 밑에 저장이 됩니다.
-![스크린샷 2019-11-25 오전 12 17 28](https://user-images.githubusercontent.com/17822723/69496777-09215580-0f19-11ea-9333-a3df8e0c647b.png)
-3. 이걸 이제 서버에 올리는 작업을 해야합니다. 그걸 ssh를 통해서 옮기던가 혹은 ftp서버를 통해서 옮기는 방법이 있었는데 저는 ssh를 통해서 옮기게 되었습니다.     
-scp의 경우 `scp 파일주소 [ID명]@[IP주소]:[서버의폴더경로]` 를 통해서 옮겨줍니다.
+2. 이러면 파일이 build 폴더 밑에 저장이 됩니다.    
+    
+![스크린샷 2019-11-25 오전 12 17 28](https://user-images.githubusercontent.com/17822723/69496777-09215580-0f19-11ea-9333-a3df8e0c647b.png)    
+3. 이걸 이제 서버에 올리는 작업을 해야합니다. 그걸 ssh를 통해서 옮기던가 혹은 ftp서버를 통해서 옮기는 방법이 있었는데 저는 ssh를 통해서 옮기게 되었습니다.    
+scp의 경우 `scp 파일주소 [ID명]@[IP주소]:[서버의폴더경로]` 를 통해서 옮겨줍니다.    
+    
 4. 실행 방법은 그 폴더 주소로 이동해서 java -jar [파일명.jar]를 이용합니다. 그려면 실행이 뿅하고 됩니다.
-
 ![스크린샷 2019-11-25 오전 12 35 49](https://user-images.githubusercontent.com/17822723/69497008-8c43ab00-0f1b-11ea-98a6-24c49e029128.png)
 
 그러면 서버 배포 완료!
