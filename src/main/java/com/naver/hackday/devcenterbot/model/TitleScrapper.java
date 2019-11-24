@@ -17,10 +17,10 @@ public class TitleScrapper {
 	private IssueQueue queue;
 	private IssueService issueService;
 
-	@Value("${spring.social.github.user}")
+	@Value("${github.user}")
 	private String user;
 
-	@Value("${spring.social.github.repo}")
+	@Value("${github.repo}")
 	private String repo;
 
 	public TitleScrapper() {

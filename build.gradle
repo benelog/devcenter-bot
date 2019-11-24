@@ -39,6 +39,9 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+	def token = System.getProperty("github.token")
+	println("Github Access Token : ${token}")
+	systemProperty "github.token", token
 }
 
 editorconfig {
