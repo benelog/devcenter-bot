@@ -104,9 +104,9 @@ https://naver.github.io/hackday-conventions-java/
 
  - API : [github api v3]([https://developer.github.com/v3/](https://developer.github.com/v3/))
  - SDK : [egit-github]([https://github.com/eclipse/egit-github](https://github.com/eclipse/egit-github))
- &nbsp;
+<br>
  먼저, egit-github 로 얻은 Issue 의 제목에서 키워드를 추출 및 분류합니다. 그 키워드를 기준으로 Database에 접근하여 해당되는 답변을 가져와, comment로 설정합니다. Issue List를 불러오는 작업은, Spring에서 제공하는 스케줄링으로 구현하였습니다.
- &nbsp;
+<br>
 First, we extract and classify <b>keyword</b> from Github Issue List using 'egit-github'. Then we sets comment for the Bot, access to Database on a <b>keyword</b> basis. For calling Github Issue List, Bot is actioned by scheduling of Spring.
 
  &nbsp;
@@ -143,7 +143,7 @@ Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새
 
 ### Deploy
 
-1. 빌드를 하기 위해서는 gradle의 build를 이용한다.
+1. 빌드를 하기 위해서는 gradle의 build를 이용합니다.
 
 <b>build.gradle</b>
 
@@ -156,7 +156,7 @@ Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새
     }
 
 &nbsp;
-빌드시의 .jar파일의 파일명을 지정하거나, 버젼명을 따로 지정할 수 있다.
+빌드시의 .jar파일의 파일명을 지정하거나, 버젼명을 따로 지정할 수 있습니다.
 
 지정하지 않은 경우 (ex) :
 
@@ -166,7 +166,7 @@ Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새
 
 ![스크린샷 2019-11-25 오전 12 09 32](https://user-images.githubusercontent.com/17822723/69496751-b051bd00-0f18-11ea-853e-73988e52a861.png)
 
-이미지 속의 bootjar를 이용한다.
+이미지 속의 bootjar를 이용합니다.
 
   
 &nbsp;
@@ -176,9 +176,9 @@ Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새
 
 &nbsp;
 3. 서버에 올리는 작업
-FTP 서버와 SSH를 이용하는 방법 중 SSH 선택.
+FTP 서버와 SSH를 이용하는 방법 중 SSH 선택합니다.
 
-scp : `scp 파일주소 [ID명]@[IP주소]:[서버의폴더경로]` 를 통해서 옮긴다.
+scp : `scp 파일주소 [ID명]@[IP주소]:[서버의폴더경로]` 를 통해서 옮깁니다.
 
 &nbsp;
 4. <b>실행 </b>
@@ -190,7 +190,7 @@ scp : `scp 파일주소 [ID명]@[IP주소]:[서버의폴더경로]` 를 통해�
 
   
 &nbsp;
-ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어하고, 이렇게하면 외부 서버에서도 Spring-boot가 잘 작동된다.
+ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어하고, 이렇게하면 외부 서버에서도 Spring-boot가 잘 작동됩니다.
   
   
 &nbsp;
@@ -198,7 +198,7 @@ ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어�
 
   
 
--Dgithub.token='' 으로 옵션 추가하면 github token로 갈아끼울 수 있다. (파일에 있는것보다 -D 옵션이 우선순위가 높음)
+-Dgithub.token='' 으로 옵션 추가하면 github token로 갈아끼울 수 있습니다. (파일에 있는것보다 -D 옵션이 우선순위가 높음)
 
     Dspring.h2.console.settings.web-allow-others=true
 
