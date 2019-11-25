@@ -107,7 +107,7 @@ https://naver.github.io/hackday-conventions-java/
 <br>
  먼저, egit-github 로 얻은 Issue 의 제목에서 키워드를 추출 및 분류합니다. 그 키워드를 기준으로 Database에 접근하여 해당되는 답변을 가져와, comment로 설정합니다. Issue List를 불러오는 작업은, Spring에서 제공하는 스케줄링으로 구현하였습니다.
 <br>
-First, we extract and classify <b>keyword</b> from Github Issue List using 'egit-github'. Then we sets comment for the Bot, access to Database on a <b>keyword</b> basis. For calling Github Issue List, Bot is actioned by scheduling of Spring.
+
 
  &nbsp;
 ### Keyword For Classify
