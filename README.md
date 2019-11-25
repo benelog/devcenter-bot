@@ -102,8 +102,8 @@ https://naver.github.io/hackday-conventions-java/
 ## Details
 ### Description
 
- - API : [github api v3]([https://developer.github.com/v3/](https://developer.github.com/v3/))
- - SDK : [egit-github]([https://github.com/eclipse/egit-github](https://github.com/eclipse/egit-github))
+ - API : [github api v3](https://developer.github.com/v3/)
+ - SDK : [egit-github](https://github.com/eclipse/egit-github)
 <br>
  먼저, egit-github 로 얻은 Issue 의 제목에서 키워드를 추출 및 분류합니다. 그 키워드를 기준으로 Database에 접근하여 해당되는 답변을 가져와, comment로 설정합니다. Issue List를 불러오는 작업은, Spring에서 제공하는 스케줄링으로 구현하였습니다.
 <br>
@@ -125,21 +125,21 @@ https://naver.github.io/hackday-conventions-java/
 &nbsp;
  1. Issue의 title을 해당되는 Type에 matching : `Keyword` 기준
  2. matching 성공 시 -> 해당 `Type`을 가짐
- 3. [BotRequest]([https://github.com/NAVER-CAMPUS-HACKDAY/devcenter-bot/blob/master/src/main/java/com/naver/hackday/devcenterbot/model/BotRequest.java](https://github.com/NAVER-CAMPUS-HACKDAY/devcenter-bot/blob/master/src/main/java/com/naver/hackday/devcenterbot/model/BotRequest.java)) 에서 `Type`에 매핑된 id 값을 기준을 Database에 접근
+ 3. [BotRequest](https://github.com/NAVER-CAMPUS-HACKDAY/devcenter-bot/blob/master/src/main/java/com/naver/hackday/devcenterbot/model/BotRequest.java) 에서 `Type`에 매핑된 id 값을 기준을 Database에 접근
  4. 해당 id로 등록된 comment 를 egit-github 를 통해 출력
 
 &nbsp;
 ### Architecture
-<div align="center">
-![기술설계사진](readme/tech_Summary.jpg) </div>
+
+![기술설계사진](readme/tech_Summary.jpg) 
 
 &nbsp;
 ### Demo
-<div align="center">
+
 ![기능구현 동영상 or gif](readme/QA_BOT_Excute.gif)
 <br>
 Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새로운 글이 생긴 경우 봇이 작동
-</div> <br>
+<br>
 
 ### Deploy
 
@@ -206,11 +206,11 @@ ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어�
 &nbsp;
 ## Contact
 
- - Sanghyuk Jung ([benelog]([https://github.com/benelog](https://github.com/benelog)))
- - SangJun Lee ([sjstyle]([https://github.com/sjstyle](https://github.com/sjstyle)))
- - kkyehit ([kkyehit]([https://github.com/kkyehit](https://github.com/kkyehit)))
- - Juhyeon ([juhyeon96]([https://github.com/juhyeon96](https://github.com/juhyeon96)))
- - 이창섭 ([ventulus95]([https://github.com/ventulus95](https://github.com/ventulus95)))
+ - Sanghyuk Jung ([benelog](https://github.com/benelog))
+ - SangJun Lee ([sjstyle](https://github.com/sjstyle))
+ - kkyehit ([kkyehit](https://github.com/kkyehit))
+ - Juhyeon ([juhyeon96](https://github.com/juhyeon96))
+ - 이창섭 ([ventulus95](https://github.com/ventulus95))
 
   
 
