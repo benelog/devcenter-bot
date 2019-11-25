@@ -36,7 +36,6 @@ dependencies {
 	compile "org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5"
 }
 
-
 test {
 	useJUnitPlatform()
 	def token = System.getProperty("github.token")
@@ -50,9 +49,9 @@ editorconfig {
 
 checkstyle {
 	configFile = file("${rootDir}/naver-checkstyle-rules.xml")
-	configProperties = ["suppressionFile" : "${rootDir}/naver-checkstyle-suppressions.xml"]
+	configProperties = ["suppressionFile": "${rootDir}/naver-checkstyle-suppressions.xml"]
 	maxWarnings = 0
-	toolVersion ="8.24"
+	toolVersion = "8.24"
 }
 
 check.dependsOn editorconfigCheck
