@@ -1,10 +1,10 @@
 
 <h1  align="center">devcenter-bot</h1>
 
-  
+
 <p align="center"> 게시판 자동 답글 봇 </p>
 
-  
+
 
 &nbsp;
 
@@ -12,24 +12,24 @@
 
 ## Table of Contents
 
-  
+
 
 *  [About the Project](#about-the-project)
 	* [주제선정 배경](#주제선정-배경)
 	*  [기술 스택](#기술-스택)
 	*  [Coding Conventions](#coding-conventions)
 *  [Getting Started](#getting-started)
-	* [Dependencies](#dependencies) 
+	* [Dependencies](#dependencies)
 *  [Details](#details)
 * 	*  [Description](#description)
-	*  [Keyword For Classify](#keyword-for-classify) 
+	*  [Keyword For Classify](#keyword-for-classify)
 	*  [Architecture](#architecture)
 	*   [Demo](#demo)
 	*  [Deploy](#deploy)
 	*  [추가사항](#추가사항)
 *  [Contact](#contact)
 
-  
+
 
 &nbsp;
 
@@ -46,7 +46,7 @@
 
 이에 대한 답변을 자동으로 하는 Bot 프로그램을 만들어서 운영비용을 줄어보고자 합니다.
 
-  
+
 &nbsp;
 ### 기술 스택
 
@@ -60,14 +60,14 @@
 
 - DB:H2db
 
-  
-  
+
+
 &nbsp;
 ### Coding conventions
 
 <b> Java </b>
 
-https://naver.github.io/hackday-conventions-java/ 
+https://naver.github.io/hackday-conventions-java/
 
 <b> Markdown </b>
 
@@ -79,7 +79,7 @@ https://naver.github.io/hackday-conventions-java/
 
 ### Dependencies
 
-  
+
     dependencies {
 	    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	    implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -90,14 +90,14 @@ https://naver.github.io/hackday-conventions-java/
 	    }
 	    compile "org.eclipse.mylyn.github:org.eclipse.egit.github.core:2.1.5"
 	}
-	
+
 	test {
 		useJUnitPlatform()
 		def token = System.getProperty("github.token")
 		println("Github Access Token : ${token}")
 		systemProperty "github.token", token
 	}
-	
+
  &nbsp;
 ## Details
 ### Description
@@ -131,7 +131,7 @@ https://naver.github.io/hackday-conventions-java/
 &nbsp;
 ### Architecture
 
-![기술설계사진](readme/tech_Summary.jpg) 
+![기술설계사진](readme/tech_Summary.jpg)
 
 &nbsp;
 ### Demo
@@ -148,11 +148,11 @@ Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새
 <b>build.gradle</b>
 
     bootjar {
-    
+
 	    archiveFileName = 'QA.jar'
-    
+
 	    archiveVersion = "0.0.0"
-    
+
     }
 
 &nbsp;
@@ -168,7 +168,7 @@ Issue를 입력 -> 서버 가동 -> 20초에 한번씩 검사 -> 20초안에 새
 
 이미지 속의 bootjar를 이용합니다.
 
-  
+
 &nbsp;
 2. 파일 저장 위치
 
@@ -182,27 +182,27 @@ scp : `scp 파일주소 [ID명]@[IP주소]:[서버의폴더경로]` 를 통해�
 
 &nbsp;
 4. <b>실행 </b>
- 
+
 
     java -jar [파일명.jar]
 
 ![스크린샷 2019-11-25 오전 12 35 49](https://user-images.githubusercontent.com/17822723/69497008-8c43ab00-0f1b-11ea-98a6-24c49e029128.png)
 
-  
+
 &nbsp;
 ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어하고, 이렇게하면 외부 서버에서도 Spring-boot가 잘 작동됩니다.
-  
-  
+
+
 &nbsp;
 ### 추가사항
 
-  
+
 
 -Dgithub.token='' 으로 옵션 추가하면 github token로 갈아끼울 수 있습니다. (파일에 있는것보다 -D 옵션이 우선순위가 높음)
 
     Dspring.h2.console.settings.web-allow-others=true
 
-  
+
 &nbsp;
 ## Contact
 
@@ -212,7 +212,7 @@ ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어�
  - Juhyeon ([juhyeon96](https://github.com/juhyeon96))
  - 이창섭 ([ventulus95](https://github.com/ventulus95))
 
-  
+
 
 
 
