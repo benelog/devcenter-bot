@@ -21,7 +21,7 @@
 *  [Getting Started](#getting-started)
 	* [Dependencies](#dependencies) 
 *  [Details](#details)
-* 	*  [Description](#description)
+	*  [Description](#description)
 	*  [Keyword For Classify](#keyword-for-classify) 
 	*  [Architecture](#architecture)
 	*   [Demo](#demo)
@@ -30,7 +30,7 @@
 *  [Contact](#contact)
 
   
-
+  이창섭                           
 &nbsp;
 
 ## About The Project
