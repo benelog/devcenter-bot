@@ -1,8 +1,3 @@
-CREATE TABLE comment_block (
-	id VARCHAR(100) NOT NULL PRIMARY KEY,
-	content TEXT
-);
-
 CREATE TABLE brain (
     id INTEGER(2) NOT NULL PRIMARY KEY,
     comment VARCHAR(150) NOT NULL
