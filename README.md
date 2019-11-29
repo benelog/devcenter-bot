@@ -27,7 +27,7 @@
 	*   [Demo](#demo)
 	*  [Deploy](#deploy)
 	*  [추가사항](#추가사항)
-*  [Contact](#contact)
+*  [Contributers](#Contributers)
 
 
 
@@ -204,15 +204,11 @@ ps) 물론 H2-console을 가기위해서는 build시의 수정사항이 있어�
 
 
 &nbsp;
-## Contact
-
- - Sanghyuk Jung ([benelog](https://github.com/benelog))
- - SangJun Lee ([sjstyle](https://github.com/sjstyle))
- - kkyehit ([kkyehit](https://github.com/kkyehit))
- - Juhyeon ([juhyeon96](https://github.com/juhyeon96))
- - 이창섭 ([ventulus95](https://github.com/ventulus95))
-
-
-
-
-
+## Contributers
+- 개발
+    - 계희준 ([kkyehit](https://github.com/kkyehit)) ([Pull Requests](https://github.com/benelog/devcenter-bot/pulls?q=is%3Apr+is%3Aclosed+author%kkyehit))
+    - 김주현 ([juhyeon96](https://github.com/juhyeon96)) ([Pull Requests](https://github.com/benelog/devcenter-bot/pulls?q=is%3Apr+is%3Aclosed+author%3Ajuhyeon96))
+    - 이창섭 ([ventulus95](https://github.com/ventulus95)) ([Pull Requests](https://github.com/benelog/devcenter-bot/pulls?q=is%3Apr+is%3Aclosed+author%ventulus95))
+- 멘토링
+    - 정상혁 ([benelog](https://github.com/benelog))
+    - 이상준 ([sjstyle](https://github.com/sjstyle))
