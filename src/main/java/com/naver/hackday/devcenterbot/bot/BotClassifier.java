@@ -14,7 +14,6 @@ import com.naver.hackday.devcenterbot.persistence.BrainDao;
 @Component
 public class BotClassifier {
 	private BrainDao brainDao;
-	private MessageModel model;
 	private Message message;
 
 	@Value("${github.user}")
@@ -30,11 +29,11 @@ public class BotClassifier {
 	}
 
 	public void classify(BotRequest request) throws IOException {
-		int id = request.getId();
 		String issueNumber = request.getIssueNumber();
-		String comment;
 
-		comment = fetchComment(id);
+		int id = request.getId();
+		String comment = fetchComment(id);
+
 		submitComment(issueNumber, comment);
 	}
 
@@ -43,13 +42,12 @@ public class BotClassifier {
 	}
 
 	private void submitComment(String issueNumber, String comment) throws IOException {
-		this.model = new MessageModel();
+		var model = new MessageModel();
+		model.setName(this.user);
+		model.setRepoName(this.repo);
+		model.setIssueNum(issueNumber);
+		model.setComment(comment);
 
-		this.model.setName(this.user);
-		this.model.setRepoName(this.repo);
-		this.model.setIssueNum(issueNumber);
-		this.model.setComment(comment);
-		message.setModel(this.model);
-		message.pushMessage();
+		message.pushMessage(model);
 	}
 }
