@@ -17,8 +17,6 @@ public class Message {
 
 	private IssueService issueService;
 
-	private MessageModel model;
-
 	public Message(
 		@Value("${github.token}") String token) {
 
@@ -28,11 +26,7 @@ public class Message {
 		issueService = new IssueService(client);
 	}
 
-	public void setModel(MessageModel model) {
-		this.model = model;
-	}
-
-	public void pushMessage() throws IOException {
+	public void pushMessage(MessageModel model) throws IOException {
 		issueService.createComment(
 			model.getName(), model.getRepoName(),
 			model.getIssueNum(), model.getComment()

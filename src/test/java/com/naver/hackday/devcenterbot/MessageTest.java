@@ -20,8 +20,7 @@ class MessageTest {
 		model.setRepoName("egit-github-test");
 		model.setIssueNum("2");
 		model.setComment("dev test test");
-		message.setModel(model);
 
-		message.pushMessage();
+		message.pushMessage(model);
 	}
 }
